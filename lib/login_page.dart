@@ -53,7 +53,9 @@ class _LoginPageState extends State<LoginPage> {
         shadowColor: Colors.lightBlueAccent.shade100,
         elevation: 5,
         child: MaterialButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamed('/homepage/');
+          },
           minWidth: 200,
           height: 42,
           color: Colors.lightBlueAccent,
