@@ -46,7 +46,55 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
 
-    // final loginButton = 
-    return Container();
+    final loginButton = Padding(
+      padding: EdgeInsets.symmetric(vertical: 16),
+      child: Material(
+        borderRadius: BorderRadius.circular(30),
+        shadowColor: Colors.lightBlueAccent.shade100,
+        elevation: 5,
+        child: MaterialButton(
+          onPressed: () {},
+          minWidth: 200,
+          height: 42,
+          color: Colors.lightBlueAccent,
+          child: Text(
+            'Log In',
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+      ),
+    );
+
+    final forgetLabel = TextButton(
+      onPressed: () {},
+      child: Text(
+        'Forgot Password?',
+        style: TextStyle(color: Colors.black54),
+      ),
+    );
+    return Scaffold(
+      body: Center(
+        child: ListView(
+          shrinkWrap: true,
+          padding: EdgeInsets.only(left: 24, right: 24),
+          children: [
+            logo,
+            SizedBox(
+              height: 48,
+            ),
+            email,
+            SizedBox(
+              height: 8,
+            ),
+            password,
+            SizedBox(
+              height: 24,
+            ),
+            loginButton,
+            forgetLabel
+          ],
+        ),
+      ),
+    );
   }
 }

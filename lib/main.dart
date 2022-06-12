@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:new_version/new_version.dart';
+import 'package:simple_login/login_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,41 +14,42 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    checkUpdate();
-
-    // TODO: implement initState
+    // _checkVersion();
   }
 
-  void checkUpdate() async {
-    final newVersion = NewVersion(androidId: "com.snapchat.android");
+  void _checkVersion() async {
+    final newVersion = NewVersion(
+      androidId: "com.snapchat.android",
+    );
     final status = await newVersion.getVersionStatus();
     newVersion.showUpdateDialog(
       context: context,
       versionStatus: status!,
-      dialogTitle: 'Update',
-      dialogText: 'Please Update',
-      dismissButtonText: 'skip',
+      dialogTitle: "UPDATE!!!",
+      dismissButtonText: "Skip",
+      dialogText: "Please update the app from " +
+          "${status.localVersion}" +
+          " to " +
+          "${status.storeVersion}",
+      dismissAction: () {
+        SystemNavigator.pop();
+      },
+      updateButtonText: "Lets update",
     );
-    print('Device :' + status.localVersion);
-    print('Store : ' + status.storeVersion);
+
+    print("DEVICE : " + status.localVersion);
+    print("STORE : " + status.storeVersion);
   }
-  // newVersion.showAlertIfNecessary(context: context);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       title: 'Material App',
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Material App Bar'),
-        ),
-        body: Center(
-          child: Container(
-            child: Text('Hello World'),
+          appBar: AppBar(
+            title: Text('Material App Bar'),
           ),
-        ),
-      ),
+          body: LoginPage(),),
     );
   }
 }
