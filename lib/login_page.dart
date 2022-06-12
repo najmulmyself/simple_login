@@ -20,6 +20,31 @@ class _LoginPageState extends State<LoginPage> {
         child: Image.asset('assets/logo.png'),
       ),
     );
+
+    final email = TextFormField(
+      keyboardType: TextInputType.emailAddress,
+      initialValue: 'najmul.test@gmail.com',
+      autofocus: false,
+      decoration: InputDecoration(
+        hintText: 'Email',
+        contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(32),
+        ),
+      ),
+    );
+    final password = TextFormField(
+      initialValue: 'enter your password',
+      autofocus: false,
+      obscureText: true,
+      decoration: InputDecoration(
+        hintText: 'Password',
+        contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(32),
+        ),
+      ),
+    );
     return Container();
   }
 }
